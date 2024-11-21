@@ -12,14 +12,16 @@
 		<Nullable>enable</Nullable>
 		<Title>Set Sound Volume</Title>
 		<StartupObject>SetSoundVolume.Program</StartupObject>
+		<ApplicationIcon>resources\VolumeControl-colorful-001-256x256.ico</ApplicationIcon>
+		<NuGetAuditLevel>low</NuGetAuditLevel>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="NAudio" Version="2.2.1" />
+	  <Content Include="resources\VolumeControl-colorful-001-256x256.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="resources\" />
+		<PackageReference Include="NAudio" Version="2.2.1" />
 	</ItemGroup>
 
 </Project>
