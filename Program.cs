@@ -82,22 +82,28 @@ namespace SetSoundVolume {
         var deviceEnumerator = new MMDeviceEnumerator();
         var device = deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
 
-        // Get current volume
-        float currentVolume = device.AudioEndpointVolume.MasterVolumeLevelScalar * 100;
-
-        // If no volume specified, just show current volume
-        if (volumeToSet == null) {
-          if (!quietMode) {
-            Console.WriteLine($"Current Master Volume: {currentVolume:F1}%");
+        // If volume is to be set
+        if (volumeToSet != null) {
+          if (volumeToSet.Value == 0) {
+            device.AudioEndpointVolume.Mute = true;
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = 0f;
+            if (!quietMode) {
+              Console.WriteLine("Volume muted (0%)");
+            }
           }
-          return;
+          else {
+            device.AudioEndpointVolume.Mute = false;
+            device.AudioEndpointVolume.MasterVolumeLevelScalar = volumeToSet.Value / 100.0f;
+            if (!quietMode) {
+              Console.WriteLine($"Volume set to: {volumeToSet:F1}%");
+            }
+          }
         }
-
-        // Set new volume
-        device.AudioEndpointVolume.MasterVolumeLevelScalar = volumeToSet.Value / 100.0f;
-
-        if (!quietMode) {
-          Console.WriteLine($"Volume set to: {volumeToSet:F1}%");
+        else if (!quietMode)  // Just showing current volume
+        {
+          float currentVolume = device.AudioEndpointVolume.MasterVolumeLevelScalar * 100;
+          bool isMuted = device.AudioEndpointVolume.Mute;
+          Console.WriteLine($"Current Master Volume: {currentVolume:F1}% {(isMuted ? "(Muted)" : "")}");
         }
       }
       catch (Exception ex) {
@@ -108,6 +114,7 @@ namespace SetSoundVolume {
     }
   }
 }
+
 
 
 //  Original hand-written version
