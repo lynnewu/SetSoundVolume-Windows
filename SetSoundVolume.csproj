@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>SetSoundVolume</AssemblyName>
+		<Authors>Lynne Whitehorn - lwhitehorn@silverstarbrands.com</Authors>
+		<Company>Silver Star Brands</Company>
+		<Copyright>Copyright 2024 - All Rights Reserved</Copyright>
+		<Version>1.0.1</Version>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Title>Set Sound Volume</Title>
+		<StartupObject>SetSoundVolume.Program</StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="NAudio" Version="2.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="resources\" />
+	</ItemGroup>
+
+</Project>

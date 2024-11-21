@@ -1,0 +1,20 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "mute-volume-0": {
+      "commandName": "Project",
+      "commandLineArgs": "0"
+    },
+    "full-volume-100": {
+      "commandName": "Project",
+      "commandLineArgs": "100"
+    },
+    "volume-15": {
+      "commandName": "Project",
+      "commandLineArgs": "15"
+    }
+  }
+}
